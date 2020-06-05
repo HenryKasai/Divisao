@@ -23,6 +23,7 @@ namespace Divisao
                 Console.WriteLine($"{numerador} dividido por {denominador} é igual a {resultado}.");
             }
             Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ReadLine();
 
         }
     }
