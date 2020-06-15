@@ -6,24 +6,31 @@ namespace Divisao
     {
         static void Main(string[] args)
         {
+            double numerador, denominador;
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("Insira o numerador da divisão: ");
-            decimal numerador = Convert.ToDecimal(Console.ReadLine());
+            bool numeradorbool = Double.TryParse(Console.ReadLine(), out numerador);
             Console.Write("Insira o denominador da divisão: ");
-            decimal denominador = Convert.ToDecimal(Console.ReadLine());
+            bool denominadorbool = Double.TryParse(Console.ReadLine(), out denominador);
 
             Console.ForegroundColor = ConsoleColor.Green;
-            if (denominador == 0)
+            if(!(numeradorbool && denominadorbool))
+            {
+                Console.WriteLine("Valor inválido.");
+                Console.ResetColor();
+                Environment.Exit(-1);
+            }
+            else if (denominador == 0)
             {
                 Console.WriteLine("Não é possível dividir por zero.");
             }
             else 
             {
-                decimal resultado = numerador / denominador;
+                double resultado = numerador / denominador;
                 Console.WriteLine($"{numerador} dividido por {denominador} é igual a {resultado}.");
             }
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.ReadLine();
+            Console.ResetColor();
+            Console.ReadKey();
 
         }
     }
